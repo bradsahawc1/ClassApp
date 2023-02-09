@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +28,9 @@ class MainActivity : AppCompatActivity() {
     private fun createHolomember() = Holomember(
         image = R.drawable.demopic,
         name = "Tokino Sora",
+        subscribers = Random.nextInt(401000, 4270000),
+        gen = "Gen 0",
         birthday = "May 15th",
-        gen = "Generation 0",
         debut = "September 7, 2017",
         illustrator = "Ordan"
     )

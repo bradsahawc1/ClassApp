@@ -30,23 +30,32 @@
             android:layout_marginStart="8dp"/>
 
         <TextView
-            android:id="@+id/holosubs"
+            android:id="@+id/holobirthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="500000"
+            android:text="5000"
             android:textSize="32sp"
             app:layout_constraintTop_toBottomOf="@id/holoname"
             app:layout_constraintStart_toStartOf="@id/holoname"/>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subs |"
+            android:textSize="32sp"
+            app:layout_constraintTop_toBottomOf="@id/holoname"
+            app:layout_constraintStart_toEndOf="@id/holobirthday"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
             android:id="@+id/hologen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Generation 0"
+            tools:text="Gen 0"
             android:textSize="32sp"
             app:layout_constraintTop_toBottomOf="@id/holoname"
-            app:layout_constraintStart_toEndOf="@id/holosubs"
-            android:layout_marginStart="8dp"/>
+            app:layout_constraintStart_toEndOf="@id/holobirthday"
+            android:layout_marginStart="100dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
