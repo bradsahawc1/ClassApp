@@ -30,10 +30,10 @@
             android:layout_marginStart="8dp"/>
 
         <TextView
-            android:id="@+id/holobirthday"
+            android:id="@+id/holosubs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="May 15th"
+            tools:text="500000"
             android:textSize="32sp"
             app:layout_constraintTop_toBottomOf="@id/holoname"
             app:layout_constraintStart_toStartOf="@id/holoname"/>
@@ -45,7 +45,7 @@
             tools:text="Generation 0"
             android:textSize="32sp"
             app:layout_constraintTop_toBottomOf="@id/holoname"
-            app:layout_constraintStart_toEndOf="@id/holobirthday"
+            app:layout_constraintStart_toEndOf="@id/holosubs"
             android:layout_marginStart="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

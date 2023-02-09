@@ -21,14 +21,14 @@ class HoloAdapter(private val holomembers: List<Holomember>) : RecyclerView.Adap
         val holomember = holomembers[position]
         holder.holoImage.setImageResource(holomember.image)
         holder.holoName.text = holomember.name
-        holder.holoBirthday.text = holomember.birthday
+        holder.holosub.text = holomember.subscribers.toString()
         holder.holoGen.text = holomember.gen
     }
 
     class HolomemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val holoImage: ImageView = itemView.findViewById(R.id.holoimage)
         val holoName: TextView = itemView.findViewById(R.id.holoname)
-        val holoBirthday: TextView = itemView.findViewById(R.id.holobirthday)
+        val holoSub: TextView = itemView.findViewById(R.id.holosub)
         val holoGen: TextView = itemView.findViewById(R.id.hologen)
     }
 }
