@@ -2,36 +2,18 @@ package com.example.classapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlin.random.Random
+import androidx.fragment.app.commit
+import com.example.classapp.UI.HoloListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.holomember_recycler_view)
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        val holomembers = mutableListOf<Holomember>()
-
-        for (i in 0 .. 30) {
-            holomembers.add(createHolomember())
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add(R.id.fragment_container, HoloListFragment())
+            addToBackStack(null)
         }
-
-        val adapter = HoloAdapter(holomembers)
-        recyclerView.adapter = adapter
     }
-
-    private fun createHolomember() = Holomember(
-        image = R.drawable.demopic,
-        name = "Tokino Sora",
-        subscribers = Random.nextInt(401000, 4270000),
-        gen = "Gen 0",
-        birthday = "May 15th",
-        debut = "September 7, 2017",
-        illustrator = "Ordan"
-    )
 }

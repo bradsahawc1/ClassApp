@@ -28,7 +28,7 @@ class HoloAdapter(private val holomembers: List<Holomember>) : RecyclerView.Adap
     class HolomemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val holoImage: ImageView = itemView.findViewById(R.id.holoimage)
         val holoName: TextView = itemView.findViewById(R.id.holoname)
-        val holoSubs: TextView = itemView.findViewById(R.id.holobirthday)
+        val holoSubs: TextView = itemView.findViewById(R.id.holosubs)
         val holoGen: TextView = itemView.findViewById(R.id.hologen)
     }
 }
