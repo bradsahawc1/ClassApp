@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add(R.id.fragment_container, HoloListFragment())
-            addToBackStack(null)
         }
     }
 }

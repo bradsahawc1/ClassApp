@@ -13,10 +13,12 @@
 
         <ImageView
             android:id="@+id/holoimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
             tools:src="@drawable/demopic"/>
 
         <TextView
@@ -24,8 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
-            app:layout_constraintStart_toEndOf="@id/holoimage"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/holoimage"
             tools:text="Tokino Sora"
             android:layout_marginStart="8dp"/>
 
@@ -33,30 +36,22 @@
             android:id="@+id/holosubs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5000"
-            android:textSize="32sp"
+            android:text="5000 subs"
+            android:textSize="28sp"
             app:layout_constraintTop_toBottomOf="@id/holoname"
-            app:layout_constraintStart_toStartOf="@id/holoname"/>
-
-        <TextView
-            android:id="@+id/subsfield"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subs |"
-            android:textSize="32sp"
-            app:layout_constraintTop_toBottomOf="@id/holoname"
-            app:layout_constraintStart_toEndOf="@id/holosubs"
-            android:layout_marginStart="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
         <TextView
             android:id="@+id/hologen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Gen 0"
-            android:textSize="32sp"
-            app:layout_constraintTop_toBottomOf="@id/holoname"
-            app:layout_constraintStart_toEndOf="@id/subsfield"
-            android:layout_marginStart="100dp"/>
+            android:textSize="28sp"
+            app:layout_constraintTop_toBottomOf="@id/holosubs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
