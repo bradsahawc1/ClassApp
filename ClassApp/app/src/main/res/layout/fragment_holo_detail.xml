@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.HoloDetailFragment">
+
+    <ImageView
+        android:id="@+id/holodetailimage"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        tools:src="@drawable/demopic"/>
+
+    <TextView
+        android:id="@+id/holodetailname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="32dp"
+        android:text="Tokino Sora"/>
+
+    <TextView
+        android:id="@+id/holodetaildescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"
+        android:textSize="20dp"
+        android:text="@string/sora"/>
+
+    <TextView
+        android:id="@+id/holodetailsubstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetaildescription"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:text="Subscribers: "/>
+
+    <TextView
+        android:id="@+id/holodetailsubs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetaildescription"
+        app:layout_constraintStart_toEndOf="@id/holodetailsubstext"
+        android:textSize="20dp"
+        android:text="1060000"/>
+
+    <TextView
+        android:id="@+id/holodetailgentext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailsubstext"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:text="Generation: "/>
+
+
+    <TextView
+        android:id="@+id/holodetailgen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailsubs"
+        app:layout_constraintStart_toEndOf="@id/holodetailgentext"
+        android:textSize="20dp"
+        android:text="Gen 0"/>
+
+    <TextView
+        android:id="@+id/holodetailbirthtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailgentext"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:text="Birthday: "/>
+
+    <TextView
+        android:id="@+id/holodetailbirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailgen"
+        app:layout_constraintStart_toEndOf="@id/holodetailbirthtext"
+        android:textSize="20dp"
+        android:text="May 15th"/>
+
+    <TextView
+        android:id="@+id/holodetaildebuttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailbirthtext"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:text="Debut: "/>
+
+    <TextView
+        android:id="@+id/holodetaildebut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailbirthday"
+        app:layout_constraintStart_toEndOf="@id/holodetaildebuttext"
+        android:textSize="20dp"
+        android:text="September 7, 2017"/>
+
+    <TextView
+        android:id="@+id/holodetailillusttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetaildebuttext"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:text="Illustrator: "/>
+
+    <TextView
+        android:id="@+id/holodetailillustrator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetaildebut"
+        app:layout_constraintStart_toEndOf="@id/holodetailillusttext"
+        android:textSize="20dp"
+        android:text="Ordan"/>
+
+    <TextView
+        android:id="@+id/holodetailstatustext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailillusttext"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:text="Status: "/>
+
+    <TextView
+        android:id="@+id/holodetailstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/holodetailillustrator"
+        app:layout_constraintStart_toEndOf="@id/holodetailstatustext"
+        android:textSize="20dp"
+        android:text="active"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
