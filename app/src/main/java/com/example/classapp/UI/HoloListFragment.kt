@@ -5,29 +5,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.classapp.UI.adapter.HoloAdapter
 import com.example.classapp.model.Holomember
 import com.example.classapp.R
+import com.example.classapp.databinding.FragmentHoloListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HoloListFragment : Fragment() {
 
-    //private var _binding FragmentHoloListBinding = null
-    //        private var _binding get() =
+    private var _binding: FragmentHoloListBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //inflate layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_holo_list_fragment, container, false)
+        _binding = FragmentHoloListBinding.inflate(inflater, container, false)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.holomember_recycler_view)
+        binding.holomemberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        //binding.holomemberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        //val view = inflater.inflate(R.layout.fragment_holo_list, container, false)
+
+        //val recyclerView = view.findViewById<RecyclerView>(R.id.holomember_recycler_view)
+
+        //recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val holomembers = mutableListOf<Holomember>()
 
@@ -242,11 +251,40 @@ class HoloListFragment : Fragment() {
             }
         }
 
-        val adapter = HoloAdapter(holomembers)
-        recyclerView.adapter = adapter
+        val adapter = HoloAdapter(holomembers) {position ->
+            val holomember = holomembers[position]
 
-        return view
+            val bundle = bundleOf(
+                "image" to holomember.image,
+                "name" to holomember.name,
+                "subs" to holomember.subscribers,
+                "gen" to holomember.gen,
+                "birthday" to holomember.birthday,
+                "debut" to holomember.debut,
+                "illustrator" to holomember.illustrator,
+                "status" to holomember.status,
+                "description" to holomember.description
+            )
+
+            val detailFragment = HoloDetailFragment()
+            detailFragment.arguments = bundle
+
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace(R.id.fragment_container, detailFragment)
+                addToBackStack(null)
+            }
+        }
+        binding.holomemberRecyclerView.adapter = adapter
+
+        return binding.root
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun createHolomember(
         image: String,
         name: String,

@@ -9,18 +9,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.classapp.R
+import com.example.classapp.databinding.FragmentHoloDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HoloDetailFragment : Fragment() {
+
+    private var _binding: FragmentHoloDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_holo_detail, container, false)
+        _binding = FragmentHoloDetailBinding.inflate(inflater, container, false)
+
+        //val view = inflater.inflate(R.layout.fragment_holo_detail, container, false)
 
         if (arguments != null) {
             val image = requireArguments().getString("image")
@@ -34,20 +39,20 @@ class HoloDetailFragment : Fragment() {
             val description: String? = requireArguments().getString("description")
 
             Glide
-                .with(view.context)
+                .with(binding.holodetailimage)
                 .load(image)
-                .into(view.findViewById<ImageView>(R.id.holodetailimage))
+                .into(binding.holodetailimage)
 
-            view.findViewById<TextView>(R.id.holodetailname).text = name
-            view.findViewById<TextView>(R.id.holodetaildescription).text = description
-            view.findViewById<TextView>(R.id.holodetailsubs).text = subscribers.toString()
-            view.findViewById<TextView>(R.id.holodetailgen).text = gen
-            view.findViewById<TextView>(R.id.holodetailbirthday).text = birthday
-            view.findViewById<TextView>(R.id.holodetaildebut).text = debut
-            view.findViewById<TextView>(R.id.holodetailillustrator).text = illustrator
-            view.findViewById<TextView>(R.id.holodetailstatus).text = status
+            binding.holodetailname.text = name
+            binding.holodetaildescription.text = description
+            binding.holodetailsubs.text = subscribers.toString()
+            binding.holodetailgen.text = gen
+            binding.holodetailbirthday.text = birthday
+            binding.holodetaildebut.text = debut
+            binding.holodetailillustrator.text = illustrator
+            binding.holodetailstatus.text = status
         }
 
-        return view
+        return binding.root
     }
 }

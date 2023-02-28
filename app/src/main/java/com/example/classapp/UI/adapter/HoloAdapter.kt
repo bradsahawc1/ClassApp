@@ -13,39 +13,24 @@ import com.bumptech.glide.Glide
 import com.example.classapp.model.Holomember
 import com.example.classapp.R
 import com.example.classapp.UI.HoloDetailFragment
+import com.example.classapp.databinding.HolomemberCardViewBinding
 
 
-class HoloAdapter(private val holomembers: List<Holomember>) :
+class HoloAdapter(
+    private val holomembers: List<Holomember>,
+    private val onItemClick: (adapterPosition: Int) -> Unit) :
+
     RecyclerView.Adapter<HoloAdapter.HolomemberViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolomemberViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.holomember_card_view, parent, false)
-        return HolomemberViewHolder(view) { position ->
-            val holomember = holomembers[position]
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = HolomemberCardViewBinding.inflate(layoutInflater, parent, false)
 
-            val bundle = bundleOf(
-                "image" to holomember.image,
-                "name" to holomember.name,
-                "subs" to holomember.subscribers,
-                "gen" to holomember.gen,
-                "birthday" to holomember.birthday,
-                "debut" to holomember.debut,
-                "illustrator" to holomember.illustrator,
-                "status" to holomember.status,
-                "description" to holomember.description
-            )
+        //val view = LayoutInflater.from(parent.context)
+        //    .inflate(R.layout.holomember_card_view, parent, false)
 
-            val detailFragment = HoloDetailFragment()
-            detailFragment.arguments = bundle
-
-            val activity = view.context as AppCompatActivity
-
-            activity.supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace(R.id.fragment_container, detailFragment)
-                addToBackStack(null)
-            }
+        return HolomemberViewHolder(binding) { position ->
+            onItemClick(position)
         }
     }
 
@@ -53,29 +38,33 @@ class HoloAdapter(private val holomembers: List<Holomember>) :
 
     override fun onBindViewHolder(holder: HolomemberViewHolder, position: Int) {
         val holomember = holomembers[position]
-        Glide
-            .with(holder.itemView.context)
-            .load(holomember.image)
-            .into(holder.holoImage)
-
-        holder.holoName.text = holomember.name
-        holder.holoSubs.text = holomember.subscribers.toString() + " subs"
-        holder.holoGen.text = holomember.gen
+        holder.bind(holomember)
     }
 
     inner class HolomemberViewHolder(
-        itemView: View,
+        private val binding: HolomemberCardViewBinding,
         private val onItemClick: (adapterPosition: Int) -> Unit
-    ) : RecyclerView.ViewHolder(itemView) {
-        val holoImage: ImageView = itemView.findViewById(R.id.holoimage)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        /*val holoImage: ImageView = itemView.findViewById(R.id.holoimage)
         val holoName: TextView = itemView.findViewById(R.id.holoname)
         val holoSubs: TextView = itemView.findViewById(R.id.holosubs)
-        val holoGen: TextView = itemView.findViewById(R.id.hologen)
+        val holoGen: TextView = itemView.findViewById(R.id.hologen)*/
 
         init {
             itemView.setOnClickListener {
                 onItemClick(adapterPosition)
             }
+        }
+
+        fun bind(holomember: Holomember) {
+            Glide
+                .with(binding.root)
+                .load(holomember.image)
+                .into(binding.holoimage)
+
+            binding.holoname.text = holomember.name
+            binding.holosubs.text = holomember.subscribers.toString() + " subs"
+            binding.hologen.text = holomember.gen
         }
     }
 }
