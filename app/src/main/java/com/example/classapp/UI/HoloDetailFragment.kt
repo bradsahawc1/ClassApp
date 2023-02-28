@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.example.classapp.R
 import com.example.classapp.databinding.FragmentHoloDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,8 +21,6 @@ class HoloDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHoloDetailBinding.inflate(inflater, container, false)
-
-        //val view = inflater.inflate(R.layout.fragment_holo_detail, container, false)
 
         if (arguments != null) {
             val image = requireArguments().getString("image")
