@@ -1,4 +1,4 @@
-package com.example.classapp
+package com.example.classapp.model
 
 data class Holomember(
     val image: String,

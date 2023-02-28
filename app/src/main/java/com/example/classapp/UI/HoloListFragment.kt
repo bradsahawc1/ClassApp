@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.classapp.HoloAdapter
-import com.example.classapp.Holomember
+import com.example.classapp.UI.adapter.HoloAdapter
+import com.example.classapp.model.Holomember
 import com.example.classapp.R
-import kotlin.random.Random
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HoloListFragment : Fragment() {
+
+    //private var _binding FragmentHoloListBinding = null
+    //        private var _binding get() =
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -1,4 +1,4 @@
-package com.example.classapp
+package com.example.classapp.UI.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.classapp.model.Holomember
+import com.example.classapp.R
 import com.example.classapp.UI.HoloDetailFragment
 
 
