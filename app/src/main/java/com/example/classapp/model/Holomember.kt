@@ -1,6 +1,7 @@
 package com.example.classapp.model
 
 data class Holomember(
+    val id: Int,
     val image: String,
     val name: String,
     val subscribers: Int,

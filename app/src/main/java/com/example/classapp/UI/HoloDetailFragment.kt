@@ -7,12 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.classapp.R
+import com.example.classapp.databinding.FragmentHoloDetailBinding
+import com.example.classapp.viewModel.HolomemberViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HoloDetailFragment : Fragment() {
+
+    private var _binding: FragmentHoloDetailBinding? = null
+    private val binding get() = _binding!!
+
+    private val holomemberViewModel: HolomemberViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,7 +29,7 @@ class HoloDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_holo_detail, container, false)
+        _binding = FragmentHoloDetailBinding.inflate(inflater, container, false)
 
         if (arguments != null) {
             val image = requireArguments().getString("image")
@@ -34,20 +43,28 @@ class HoloDetailFragment : Fragment() {
             val description: String? = requireArguments().getString("description")
 
             Glide
-                .with(view.context)
+                .with(requireContext())
                 .load(image)
-                .into(view.findViewById<ImageView>(R.id.holodetailimage))
+                .into(binding.holodetailimage)
 
-            view.findViewById<TextView>(R.id.holodetailname).text = name
-            view.findViewById<TextView>(R.id.holodetaildescription).text = description
-            view.findViewById<TextView>(R.id.holodetailsubs).text = subscribers.toString()
-            view.findViewById<TextView>(R.id.holodetailgen).text = gen
-            view.findViewById<TextView>(R.id.holodetailbirthday).text = birthday
-            view.findViewById<TextView>(R.id.holodetaildebut).text = debut
-            view.findViewById<TextView>(R.id.holodetailillustrator).text = illustrator
-            view.findViewById<TextView>(R.id.holodetailstatus).text = status
+            binding.holodetailname.text = name
+            binding.holodetaildescription.text = description
+            binding.holodetailsubs.text = subscribers.toString()
+            binding.holodetailgen.text = gen
+            binding.holodetailbirthday.text = birthday
+            binding.holodetaildebut.text = debut
+            binding.holodetailillustrator.text = illustrator
+            binding.holodetailstatus.text = status
         }
 
-        return view
+        return binding.root
+    }
+
+    companion object {
+        private const val BUNDLE_ID = "holomember_id"
+
+        fun newInstance(id: Int) = HoloDetailFragment().apply {
+            arguments = bundleOf(BUNDLE_ID to id)
+        }
     }
 }

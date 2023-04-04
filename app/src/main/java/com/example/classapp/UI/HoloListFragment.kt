@@ -5,31 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.classapp.UI.adapter.HoloAdapter
 import com.example.classapp.model.Holomember
 import com.example.classapp.R
+import com.example.classapp.databinding.FragmentHoloListFragmentBinding
+import com.example.classapp.viewModel.HolomemberViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HoloListFragment : Fragment() {
 
-    //private var _binding FragmentHoloListBinding = null
-    //        private var _binding get() =
+    private var _binding: FragmentHoloListFragmentBinding? = null
+    private val binding get() = _binding!!
+
+    private val hololiveViewModel: HolomemberViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //inflate layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_holo_list_fragment, container, false)
+        _binding = FragmentHoloListFragmentBinding.inflate(inflater, container, false)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.holomember_recycler_view)
+        binding.holomemberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val holomembers = hololiveViewModel.fillData()
 
-        val holomembers = mutableListOf<Holomember>()
+        val adapter = HoloAdapter(holomembers) { position ->
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace(
+                    R.id.fragment_container,
+                    HoloDetailFragment.newInstance(holomembers[position].id),
+                )
+                addToBackStack(null)
+            }
+        }
+        binding.holomemberRecyclerView.adapter = adapter
+
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+}
+
+        /*
 
         val holoimages = mutableListOf(
             "https://yt3.ggpht.com/ytc/AL5GRJUjOyRvUrRPtu1nWZFJVco-L4-1Doz21LrA0Ph8CQ=s88-c-k-c0x00ffffff-no-rj-mo",
@@ -180,92 +206,4 @@ class HoloListFragment : Fragment() {
             getString(R.string.amelia), getString(R.string.irys), getString(R.string.fauna), getString(R.string.kronii), getString(R.string.mumei), getString(R.string.bae),
             getString(R.string.coco), getString(R.string.sana), getString(R.string.frienda), getString(R.string.nodoka)
         )
-
-        for (i in 0 .. 57) {
-            if (i == 0 || i == 1 || i == 12 || i == 14 || i == 17) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[0], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 2 || i == 3 || i == 4 || i == 5 || i == 6) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[1], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 7 || i == 8 || i == 9 || i == 10 || i == 11) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[2], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 18 || i == 19 || i == 20 || i == 21) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[3], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 22 || i == 23 || i == 24 || i == 25 || i == 54) {
-                if (i == 54) {
-                    holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[4], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[1], holodesc[i]))
-                }
-                else {
-                    holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[4], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-                }
-            }
-            else if (i == 26 || i == 27 || i == 28 || i == 29) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[5], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 30 || i == 31 || i == 32 || i == 33 || i == 34) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[6], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 13 || i == 15 || i == 16) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[7], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 44 || i == 45 || i == 46 || i == 47 || i == 48) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[8], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 49) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[9], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 50 || i == 51 || i == 52 || i == 53 || i == 55) {
-                if (i == 55) {
-                    holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[10], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[1], holodesc[i]))
-                }
-                else {
-                    holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[10], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-                }
-            }
-            else if (i == 35 || i == 36 || i == 37) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[11], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 38 || i == 39 || i == 40) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[12], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 41 || i == 42 || i == 43) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[13], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else if (i == 56 || i == 57) {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], hologens[14], holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[0], holodesc[i]))
-            }
-            else {
-                holomembers.add(createHolomember(holoimages[i], holonames[i], holosubscount[i], "Did not find", holobirthdays[i], holodebuts[i], holoillustrators[i], holostatus[1], holodesc[i]))
-            }
-        }
-
-        val adapter = HoloAdapter(holomembers)
-        recyclerView.adapter = adapter
-
-        return view
-    }
-    private fun createHolomember(
-        image: String,
-        name: String,
-        subscribers: Int,
-        gen: String,
-        birthday: String,
-        debut: String,
-        illustrator: String,
-        status: String,
-        description: String
-    ) = Holomember(
-        image = image,
-        name = name,
-        subscribers = subscribers,
-        gen = gen,
-        birthday = birthday,
-        debut = debut,
-        illustrator = illustrator,
-        status = status,
-        description = description
-    )
-}
+        */

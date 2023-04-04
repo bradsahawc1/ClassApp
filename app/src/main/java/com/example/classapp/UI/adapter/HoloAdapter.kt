@@ -13,16 +13,57 @@ import com.bumptech.glide.Glide
 import com.example.classapp.model.Holomember
 import com.example.classapp.R
 import com.example.classapp.UI.HoloDetailFragment
+import com.example.classapp.databinding.HolomemberCardViewBinding
 
 
-class HoloAdapter(private val holomembers: List<Holomember>) :
+class HoloAdapter(
+    private val holomembers: List<Holomember>,
+    private val onItemClick: (adapterPosition: Int) -> Unit,
+) :
     RecyclerView.Adapter<HoloAdapter.HolomemberViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolomemberViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.holomember_card_view, parent, false)
-        return HolomemberViewHolder(view) { position ->
-            val holomember = holomembers[position]
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = HolomemberCardViewBinding.inflate(layoutInflater, parent, false)
+
+        return HolomemberViewHolder(binding) { position ->
+            onItemClick(position)
+        }
+    }
+
+    override fun getItemCount() = holomembers.size
+
+    override fun onBindViewHolder(holder: HolomemberViewHolder, position: Int) {
+    val holomember = holomembers[position]
+    holder.bind(holomember)
+    }
+
+    inner class HolomemberViewHolder(
+        private val binding: HolomemberCardViewBinding,
+        private val onItemClick: (adapterPosition: Int) -> Unit,
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick(adapterPosition)
+            }
+        }
+
+        fun bind(holomember: Holomember) {
+            Glide
+                .with(binding.root)
+                .load(holomember.image)
+                .error(R.drawable.demopic)
+                .into(binding.holoimage)
+
+            binding.holoname.text = holomember.name
+            binding.holosubs.text = holomember.subscribers.toString()
+            binding.hologen.text = holomember.gen
+        }
+    }
+}
+
+            /*val holomember = holomembers[position]
 
             val bundle = bundleOf(
                 "image" to holomember.image,
@@ -78,4 +119,4 @@ class HoloAdapter(private val holomembers: List<Holomember>) :
             }
         }
     }
-}
+}*/
