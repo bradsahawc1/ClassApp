@@ -1,27 +1,24 @@
-package com.example.classapp.UI
+package com.example.classapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.example.classapp.R
-import com.example.classapp.databinding.FragmentHoloDetailBinding
-import com.example.classapp.viewModel.HolomemberViewModel
+import com.example.classapp.databinding.FragmentPokeDetailBinding
+import com.example.classapp.viewModel.PokemonViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HoloDetailFragment : Fragment() {
+class PokeDetailFragment : Fragment() {
 
-    private var _binding: FragmentHoloDetailBinding? = null
+    private var _binding: FragmentPokeDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val holomemberViewModel: HolomemberViewModel by activityViewModels()
+    private val pokemonViewModel: PokemonViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +26,7 @@ class HoloDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHoloDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentPokeDetailBinding.inflate(inflater, container, false)
 
         if (arguments != null) {
             val image = requireArguments().getString("image")
@@ -45,25 +42,25 @@ class HoloDetailFragment : Fragment() {
             Glide
                 .with(requireContext())
                 .load(image)
-                .into(binding.holodetailimage)
+                .into(binding.pokedetailimage)
 
-            binding.holodetailname.text = name
-            binding.holodetaildescription.text = description
-            binding.holodetailsubs.text = subscribers.toString()
-            binding.holodetailgen.text = gen
-            binding.holodetailbirthday.text = birthday
-            binding.holodetaildebut.text = debut
-            binding.holodetailillustrator.text = illustrator
-            binding.holodetailstatus.text = status
+            binding.pokedetailname.text = name
+            binding.pokedetaildescription.text = description
+            binding.pokedetailsubs.text = subscribers.toString()
+            binding.pokedetailgen.text = gen
+            binding.pokedetailbirthday.text = birthday
+            binding.pokedetaildebut.text = debut
+            binding.pokedetailillustrator.text = illustrator
+            binding.pokedetailstatus.text = status
         }
 
         return binding.root
     }
 
     companion object {
-        private const val BUNDLE_ID = "holomember_id"
+        private const val BUNDLE_ID = "pokemon_id"
 
-        fun newInstance(id: Int) = HoloDetailFragment().apply {
+        fun newInstance(id: Int) = PokeDetailFragment().apply {
             arguments = bundleOf(BUNDLE_ID to id)
         }
     }

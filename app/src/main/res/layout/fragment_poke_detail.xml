@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".UI.HoloDetailFragment">
+    tools:context=".ui.PokeDetailFragment">
 
     <ImageView
-        android:id="@+id/holodetailimage"
+        android:id="@+id/pokedetailimage"
         android:layout_width="140dp"
         android:layout_height="140dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,20 +17,20 @@
         tools:src="@drawable/demopic"/>
 
     <TextView
-        android:id="@+id/holodetailname"
+        android:id="@+id/pokedetailname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailimage"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="32dp"
         android:text="Tokino Sora"/>
 
     <TextView
-        android:id="@+id/holodetaildescription"
+        android:id="@+id/pokedetaildescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailname"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
@@ -41,17 +41,17 @@
         android:id="@+id/holodetailsubstext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetaildescription"
+        app:layout_constraintTop_toBottomOf="@id/pokedetaildescription"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"
         android:textSize="20dp"
         android:text="Subscribers: "/>
 
     <TextView
-        android:id="@+id/holodetailsubs"
+        android:id="@+id/pokedetailsubs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetaildescription"
+        app:layout_constraintTop_toBottomOf="@id/pokedetaildescription"
         app:layout_constraintStart_toEndOf="@id/holodetailsubstext"
         android:textSize="20dp"
         android:text="1060000"/>
@@ -68,10 +68,10 @@
 
 
     <TextView
-        android:id="@+id/holodetailgen"
+        android:id="@+id/pokedetailgen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailsubs"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailsubs"
         app:layout_constraintStart_toEndOf="@id/holodetailgentext"
         android:textSize="20dp"
         android:text="Gen 0"/>
@@ -87,10 +87,10 @@
         android:text="Birthday: "/>
 
     <TextView
-        android:id="@+id/holodetailbirthday"
+        android:id="@+id/pokedetailbirthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailgen"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailgen"
         app:layout_constraintStart_toEndOf="@id/holodetailbirthtext"
         android:textSize="20dp"
         android:text="May 15th"/>
@@ -106,10 +106,10 @@
         android:text="Debut: "/>
 
     <TextView
-        android:id="@+id/holodetaildebut"
+        android:id="@+id/pokedetaildebut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailbirthday"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailbirthday"
         app:layout_constraintStart_toEndOf="@id/holodetaildebuttext"
         android:textSize="20dp"
         android:text="September 7, 2017"/>
@@ -125,10 +125,10 @@
         android:text="Illustrator: "/>
 
     <TextView
-        android:id="@+id/holodetailillustrator"
+        android:id="@+id/pokedetailillustrator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetaildebut"
+        app:layout_constraintTop_toBottomOf="@id/pokedetaildebut"
         app:layout_constraintStart_toEndOf="@id/holodetailillusttext"
         android:textSize="20dp"
         android:text="Ordan"/>
@@ -144,10 +144,10 @@
         android:text="Status: "/>
 
     <TextView
-        android:id="@+id/holodetailstatus"
+        android:id="@+id/pokedetailstatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailillustrator"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailillustrator"
         app:layout_constraintStart_toEndOf="@id/holodetailstatustext"
         android:textSize="20dp"
         android:text="active"/>

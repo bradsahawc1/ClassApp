@@ -3,7 +3,7 @@ package com.example.classapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commit
-import com.example.classapp.UI.HoloListFragment
+import com.example.classapp.ui.PokeListFragment
 import com.example.classapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add(R.id.fragment_container, HoloListFragment())
+            add(R.id.fragment_container, PokeListFragment())
         }
     }
 }

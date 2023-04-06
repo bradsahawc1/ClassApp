@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/holoimage"
+            android:id="@+id/pokeimage"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,34 +22,34 @@
             tools:src="@drawable/demopic"/>
 
         <TextView
-            android:id="@+id/holoname"
+            android:id="@+id/pokename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/holoimage"
+            app:layout_constraintTop_toBottomOf="@id/pokeimage"
             tools:text="Tokino Sora"
             android:layout_marginStart="8dp"/>
 
         <TextView
-            android:id="@+id/holosubs"
+            android:id="@+id/pokesubs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5000 subs"
             android:textSize="28sp"
-            app:layout_constraintTop_toBottomOf="@id/holoname"
+            app:layout_constraintTop_toBottomOf="@id/pokename"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
 
         <TextView
-            android:id="@+id/hologen"
+            android:id="@+id/pokegen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Gen 0"
             android:textSize="28sp"
-            app:layout_constraintTop_toBottomOf="@id/holosubs"
+            app:layout_constraintTop_toBottomOf="@id/pokesubs"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

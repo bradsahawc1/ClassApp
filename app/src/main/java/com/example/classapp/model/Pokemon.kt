@@ -1,6 +1,6 @@
 package com.example.classapp.model
 
-data class Holomember(
+data class Pokemon(
     val id: Int,
     val image: String,
     val name: String,
@@ -12,3 +12,5 @@ data class Holomember(
     val status: String,
     val description: String
 )
+
+//https://github.com/PokeAPI/pokekotlin

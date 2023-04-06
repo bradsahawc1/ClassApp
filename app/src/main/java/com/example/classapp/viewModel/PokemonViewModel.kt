@@ -1,13 +1,12 @@
 package com.example.classapp.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.classapp.model.Holomember
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.example.classapp.model.Pokemon
 import javax.inject.Inject
 import kotlin.random.Random
 
-class HolomemberViewModel @Inject constructor() : ViewModel() {
-    private val holomembers = mutableListOf<Holomember>()
+class PokemonViewModel @Inject constructor() : ViewModel() {
+    private val pokemons = mutableListOf<Pokemon>()
 
     private val images = listOf(
         "https://rickandmortyapi.com/api/character/avatar/291.jpeg",
@@ -19,16 +18,16 @@ class HolomemberViewModel @Inject constructor() : ViewModel() {
     private val illustrators = listOf("Ordan", "Kuromaru9", "Ayamy", "Azumi Akitake", "Haruyuki")
 
     init {
-        createHolomembers()
+        createPokemembers()
     }
 
-    fun fillData() = holomembers.toList()
+    fun fillData() = pokemons.toList()
 
-    fun fetchById(id: Int) = holomembers.first {it.id == id}
+    fun fetchById(id: Int) = pokemons.first {it.id == id}
 
-    private fun createHolomembers() = (0 .. 30).map { id ->
-        holomembers.add(
-            Holomember(
+    private fun createPokemembers() = (0 .. 30).map { id ->
+        pokemons.add(
+            Pokemon(
                 id = id,
                 image = images.random(),
                 name = names.random(),
