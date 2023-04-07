@@ -3,12 +3,14 @@ package com.example.classapp.model
 import com.squareup.moshi.Json
 
 data class Pokemon(
-    @Json(name = "id")
-    val id: Int,
-    @Json(name = "image")
-    val image: String,
     @Json(name = "name")
     val name: String,
+    @Json(name = "url")
+    val url: String,
+    @Json(name = "image")
+    val image: String,
+    @Json(name = "id")
+    val id: Int,
     @Json(name = "ability")
     val ability: List<String>,
     @Json(name = "height")
@@ -17,6 +19,8 @@ data class Pokemon(
     val weight: Int,
     @Json(name = "type")
     val type: List<String>,
+    @Json(name = "desc")
+    val desc: String,
 ) {
 
 }

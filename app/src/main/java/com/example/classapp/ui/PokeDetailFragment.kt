@@ -31,13 +31,12 @@ class PokeDetailFragment : Fragment() {
         if (arguments != null) {
             val image = requireArguments().getString("image")
             val name = requireArguments().getString("name")
-            val subscribers = requireArguments().getInt("subs")
-            val gen = requireArguments().getString("gen")
-            val birthday = requireArguments().getString("birthday")
-            val debut = requireArguments().getString("debut")
-            val illustrator = requireArguments().getString("illustrator")
-            val status = requireArguments().getString("status")
-            val description: String? = requireArguments().getString("description")
+            val id = requireArguments().getInt("subs")
+            val ability = requireArguments().getString("gen")
+            val type = requireArguments().getString("birthday")
+            val weight = requireArguments().getString("weight")
+            val height = requireArguments().getString("height")
+            val desc: String? = requireArguments().getString("description")
 
             Glide
                 .with(requireContext())
@@ -45,13 +44,11 @@ class PokeDetailFragment : Fragment() {
                 .into(binding.pokedetailimage)
 
             binding.pokedetailname.text = name
-            binding.pokedetaildescription.text = description
-            binding.pokedetailsubs.text = subscribers.toString()
-            binding.pokedetailgen.text = gen
-            binding.pokedetailbirthday.text = birthday
-            binding.pokedetaildebut.text = debut
-            binding.pokedetailillustrator.text = illustrator
-            binding.pokedetailstatus.text = status
+            binding.pokedetaildesc.text = desc
+            binding.pokedetailid.text = id.toString()
+            binding.pokedetailability.text = ability
+            binding.pokedetailtype.text = type
+            binding.pokedetailmeasurements.text = weight.toString() + "" + height.toString()
         }
 
         return binding.root

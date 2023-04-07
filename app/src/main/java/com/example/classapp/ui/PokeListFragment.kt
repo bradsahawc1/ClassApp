@@ -15,6 +15,7 @@ import com.example.classapp.databinding.FragmentPokeListBinding
 import com.example.classapp.viewModel.PokemonViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.core.view.isVisible
 
 @AndroidEntryPoint
 class PokeListFragment : Fragment() {
@@ -57,18 +58,18 @@ class PokeListFragment : Fragment() {
         lifecycleScope.launch {
             pokemonViewModel.pokemons.collect { event ->
                 when (event) {
-                    PokemonViewModel.RickAndMortyCharacterEvent.Failure -> {
+                    PokemonViewModel.PokemonCharacterEvent.Failure -> {
                         binding.progressBar.isVisible = false
                         binding.pokemonRecyclerView.isVisible = false
                         binding.errorMessage.isVisible = true
                     }
-                    PokemonViewModel.RickAndMortyCharacterEvent.Loading -> {
+                    PokemonViewModel.PokemonCharacterEvent.Loading -> {
                         binding.progressBar.isVisible = true
                         binding.pokemonRecyclerView.isVisible = false
                         binding.errorMessage.isVisible = false
                     }
-                    is PokemonViewModel.RickAndMortyCharacterEvent.Success -> {
-                        pokeAdapter.refreshData(event.characters)
+                    is PokemonViewModel.PokemonCharacterEvent.Success -> {
+                        pokeAdapter.refreshData(event.pokemons)
                         binding.progressBar.isVisible = false
                         binding.errorMessage.isVisible = false
                         binding.pokemonRecyclerView.isVisible = true

@@ -23,11 +23,22 @@
         app:layout_constraintTop_toBottomOf="@id/pokedetailimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:text="Tokino Sora"/>
 
     <TextView
-        android:id="@+id/pokedetaildescription"
+        android:id="@+id/pokedetailid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/pokedetailname"
+        app:layout_constraintEnd_toStartOf="@id/pokedetailimage"
+        android:textSize="32sp"
+        android:text="1"
+        android:layout_marginEnd="48dp"/>
+
+    <TextView
+        android:id="@+id/pokedetaildesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/pokedetailname"
@@ -38,118 +49,54 @@
         android:text="@string/sora"/>
 
     <TextView
-        android:id="@+id/holodetailsubstext"
+        android:id="@+id/pokedetailabilitytext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetaildescription"
+        app:layout_constraintTop_toBottomOf="@id/pokedetaildesc"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20dp"
+        android:text="Abilities: "/>
+
+    <TextView
+        android:id="@+id/pokedetailability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pokedetaildesc"
+        app:layout_constraintStart_toEndOf="@id/pokedetailabilitytext"
+        android:layout_marginTop="8dp"
+        android:textSize="20dp"
+        android:text="overgrown\nblaze"/>
+
+    <TextView
+        android:id="@+id/pokedetailtypetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailability"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"
         android:textSize="20dp"
-        android:text="Subscribers: "/>
+        android:text="Type: "/>
+
 
     <TextView
-        android:id="@+id/pokedetailsubs"
+        android:id="@+id/pokedetailtype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetaildescription"
-        app:layout_constraintStart_toEndOf="@id/holodetailsubstext"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailability"
+        app:layout_constraintStart_toEndOf="@id/pokedetailtypetext"
         android:textSize="20dp"
-        android:text="1060000"/>
+        android:text="Grass\nFire"/>
 
     <TextView
-        android:id="@+id/holodetailgentext"
+        android:id="@+id/pokedetailmeasurements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailsubstext"
+        app:layout_constraintTop_toBottomOf="@id/pokedetailtype"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"
         android:textSize="20dp"
-        android:text="Generation: "/>
-
-
-    <TextView
-        android:id="@+id/pokedetailgen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetailsubs"
-        app:layout_constraintStart_toEndOf="@id/holodetailgentext"
-        android:textSize="20dp"
-        android:text="Gen 0"/>
-
-    <TextView
-        android:id="@+id/holodetailbirthtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailgentext"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-        android:textSize="20dp"
-        android:text="Birthday: "/>
-
-    <TextView
-        android:id="@+id/pokedetailbirthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetailgen"
-        app:layout_constraintStart_toEndOf="@id/holodetailbirthtext"
-        android:textSize="20dp"
-        android:text="May 15th"/>
-
-    <TextView
-        android:id="@+id/holodetaildebuttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailbirthtext"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-        android:textSize="20dp"
-        android:text="Debut: "/>
-
-    <TextView
-        android:id="@+id/pokedetaildebut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetailbirthday"
-        app:layout_constraintStart_toEndOf="@id/holodetaildebuttext"
-        android:textSize="20dp"
-        android:text="September 7, 2017"/>
-
-    <TextView
-        android:id="@+id/holodetailillusttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetaildebuttext"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-        android:textSize="20dp"
-        android:text="Illustrator: "/>
-
-    <TextView
-        android:id="@+id/pokedetailillustrator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetaildebut"
-        app:layout_constraintStart_toEndOf="@id/holodetailillusttext"
-        android:textSize="20dp"
-        android:text="Ordan"/>
-
-    <TextView
-        android:id="@+id/holodetailstatustext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/holodetailillusttext"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-        android:textSize="20dp"
-        android:text="Status: "/>
-
-    <TextView
-        android:id="@+id/pokedetailstatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pokedetailillustrator"
-        app:layout_constraintStart_toEndOf="@id/holodetailstatustext"
-        android:textSize="20dp"
-        android:text="active"/>
+        android:text="hieght: 4 Width: 36"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,7 +60,7 @@ class PokeAdapter (
                 .into(binding.pokeimage)
 
             binding.pokename.text = pokemon.name
-            binding.pokesubs.text = pokemon.height.toString()
+            binding.pokenumber.text = pokemon.id.toString()
         }
     }
 }
