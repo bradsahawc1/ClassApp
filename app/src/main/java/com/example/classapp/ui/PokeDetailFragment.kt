@@ -9,7 +9,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.classapp.databinding.FragmentPokeDetailBinding
-import com.example.classapp.viewModel.PokemonViewModel
+import com.example.classapp.model.Pokemon
+import com.example.classapp.viewModel.PokemonDetViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +19,10 @@ class PokeDetailFragment : Fragment() {
     private var _binding: FragmentPokeDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val pokemonViewModel: PokemonViewModel by activityViewModels()
+    private val pokemonDetViewModel: PokemonDetViewModel by activityViewModels()
+
+    private val pokemons = mutableListOf<Pokemon>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,7 +52,7 @@ class PokeDetailFragment : Fragment() {
             binding.pokedetailid.text = id.toString()
             binding.pokedetailability.text = ability
             binding.pokedetailtype.text = type
-            binding.pokedetailmeasurements.text = weight.toString() + "" + height.toString()
+            binding.pokedetailmeasurements.text = weight.toString() + " " + height.toString()
         }
 
         return binding.root

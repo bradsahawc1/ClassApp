@@ -15,4 +15,13 @@ class PokeRepositoryImpl @Inject constructor(
             PokeResponse.Error
         }
     }
+
+    override suspend fun getData(): PokeResponse {
+        val result = pokeApi.getData()
+        return if (result.isSuccessful) {
+            PokeResponse.Success(result.body()?.pokemons ?: emptyList())
+        } else {
+            PokeResponse.Error
+        }
+    }
 }
